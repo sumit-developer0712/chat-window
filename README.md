@@ -1,1 +1,1 @@
-# chat-window
+# React-chat-app
