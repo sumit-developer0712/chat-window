@@ -1,9 +1,10 @@
 const config = require('config');
 const axios = require('axios');
 
-class service {
+class Service {
 
     constructor() {
+		console.log(config.get('server.westUsPostUrl'))
 		this.instance = axios.create({ 
             baseURL: config.get('server.westUsPostUrl') 
         });
@@ -30,3 +31,5 @@ class service {
 	}
     
 }
+
+module.exports = new Service();
