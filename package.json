@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/sumit-developer0712/react_chat_app#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "config": "^1.30.0",
     "express": "^4.16.2",
     "react": "^16.2.0",
+    "react-chat-window": "^1.0.8",
     "react-dom": "^16.2.0"
   }
 }

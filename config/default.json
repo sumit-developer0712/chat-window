@@ -1,0 +1,5 @@
+{
+    "server": {
+        "basePostUrl": "https://westus.api.cognitive.microsoft.com/qnamaker/v2.0/knowledgebases/dbc6735b-8cd7-400b-848a-823b2f8b5f7c/generateAnswer"
+    }
+}
