@@ -10,6 +10,5 @@ app.use(bodyParser.json());
 app.use('/api', controllers);
 
 const server = http.createServer(app).listen(port);
-console.log("server started ...................")
 
 module.exports = server;

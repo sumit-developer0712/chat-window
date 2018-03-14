@@ -1,35 +1,29 @@
 const config = require('config');
 const axios = require('axios');
 
-class Service {
+class messageService {
 
-    constructor() {
-		console.log(config.get('server.westUsPostUrl'))
-		this.instance = axios.create({ 
-            baseURL: config.get('server.westUsPostUrl') 
-        });
-    }
-
-    post(url, payload) {
-		const options = { 
-            headers: {
-                'content-type': 'application/json',
-                'ocp-apim-subscription-key': 'e196d2839bd24d84a0b460da4b85bd35'
-            } 
-        };
+    post(payload) {
 		return new Promise((resolve, reject) => {
-			this.instance.post(url, payload, options).then((response) => {
-				if (response.answers) {
-					resolve(response.answers);
-				} else {
-					reject({ "answer": "No good match found in the KB"});
-				}
-			}).catch((err) => {
-				reject(err);
-			});
+			axios({
+				method: 'post',
+				url: config.get('server.westUsPostUrl'),
+				headers: {
+					'content-type': 'application/json',
+					'ocp-apim-subscription-key': 'e196d2839bd24d84a0b460da4b85bd35'
+				},
+				data: payload
+			  }).then(function (response) {
+				resolve(response.data.answers);
+			  }).catch(function (axError) {
+				reject({
+					status:500,
+					msg: "Server error"
+				 });
+			  })
 		});
 	}
     
 }
 
-module.exports = new Service();
+module.exports = new messageService;
